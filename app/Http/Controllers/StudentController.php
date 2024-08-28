@@ -69,8 +69,9 @@ class StudentController extends Controller
     }
 
     public function searchStudent(Request $req) {
-        $students = Student::where('name', 'like', "%$req->search%")->get();
+        $students = Student::where("$req->data_type", 'like', "%$req->search%")->get();
         $name = $req->search;
-        return view('index', compact('students', 'name'));
+        $type = $req->data_type;
+        return view('index', compact('students', 'name', 'type'));
     }
 }
