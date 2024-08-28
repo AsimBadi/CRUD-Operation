@@ -55,8 +55,8 @@ class StudentController extends Controller
         return view('update', compact('student', 'categories'));
     }
 
-    public function updateStudent(Request $req, $id, Student $student) {
-        $student->where('id', $id)->update([
+    public function updateStudent(Request $req, $id, ) {
+        Student::where('id', $id)->update([
             'name' => $req->name,
             'email'=> $req->email,
             'description' => $req->description,
