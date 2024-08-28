@@ -22,15 +22,15 @@ class StudentController extends Controller
             'categories_id' => 'required'
         ]);
 
-        $student = new Student();
-        $student->name = $req->name;
-        $student->email = $req->email;
-        $student->description = $req->description;
-        $student->machines = implode(',', $req->machines);
-        $student->gender = $req->gender;
-        $student->country = $req->country;
-        $student->category_id = $req->categories_id;
-        $student->save();
+        Student::create([
+            'name'=> $req->name,
+            'email'=> $req->email,
+            'description' => $req->description,
+            'machines' => implode(',', $req->machines),
+            'gender' => $req->gender,
+            'country' => $req->country,
+            'category_id' => $req->categories_id
+        ]);
         return redirect('/');
     }
 
@@ -55,16 +55,16 @@ class StudentController extends Controller
         return view('update', compact('student', 'categories'));
     }
 
-    public function updateStudent(Request $req,$id) {
-        $student = Student::find($id);
-        $student->name = $req->name;
-        $student->email = $req->email;
-        $student->description = $req->description;
-        $student->machines = implode(',', $req->machines);
-        $student->gender = $req->gender;
-        $student->country = $req->country;
-        $student->category_id = $req->categories_id;
-        $student->save();
+    public function updateStudent(Request $req, $id, Student $student) {
+        $student->where('id', $id)->update([
+            'name' => $req->name,
+            'email'=> $req->email,
+            'description' => $req->description,
+            'machines' => implode(',', $req->machines),
+            'gender' => $req->gender,
+            'country' => $req->country,
+            'category_id' => $req->categories_id
+        ]);
         return redirect('/');
     }
 
