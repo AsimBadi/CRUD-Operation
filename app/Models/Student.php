@@ -16,7 +16,8 @@ class Student extends Model
         'machines',
         'gender',
         'country',
-        'category_id'
+        'category_id',
+        'image_path'
     ];
     public function category() {
         return $this->belongsTo(Category::class);

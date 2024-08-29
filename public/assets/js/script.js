@@ -24,6 +24,9 @@ $(document).ready(function () {
                 },
                 categories_id:{
                     required: true
+                },
+                file:{
+                    required: true
                 }
             },
             messages:{
@@ -50,6 +53,9 @@ $(document).ready(function () {
                 },
                 categories_id:{
                     required: 'Please select a Category'
+                },
+                file:{
+                    required: 'Please Upload a Image'
                 }
             },
             submitHandler: function(form) {

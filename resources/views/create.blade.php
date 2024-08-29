@@ -9,7 +9,7 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
       </script>
-      @vite('resources/js/first.js')
+      {{-- @vite('resources/js/first.js') --}}
       <style>
         .error{
             color: red;
@@ -20,7 +20,7 @@
 <body>
     <div class="container-fluid w-50">
         <h2 class="text-center mt-2">Create Student</h2>
-        <form action="insert" method="POST" autocomplete="off" id="form">
+        <form action="insert" method="POST" autocomplete="off" id="form" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="" class="form-label">Username:</label>
@@ -97,6 +97,13 @@
                     <span class="error">{{$message}}</span>
                 @enderror
               </div>
+              <div class="mb-2">
+                <label for="formFile" class="form-label">Image:</label>
+                <input class="form-control" type="file" id="formFile" name="file">
+                @error('file')
+                    <span class="error">{{$message}}</span>
+                @enderror
+              </div>
               <input type="submit" name="submit" value="submit" class="btn btn-primary form-control mt-4">
         </form>
     </div>
@@ -104,4 +111,5 @@
 </body>
 <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.min.js" integrity="sha512-KFHXdr2oObHKI9w4Hv1XPKc898mE4kgYx58oqsc/JqqdLMDI4YjOLzom+EMlW8HFUd0QfjfAvxSL6sEq/a42fQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="{{ asset('assets/js/script.js') }}"></script>
 </html>

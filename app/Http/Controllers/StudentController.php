@@ -19,9 +19,12 @@ class StudentController extends Controller
             'machines' => 'required',
             'gender' => 'required',
             'country' => 'required',
-            'categories_id' => 'required'
+            'categories_id' => 'required',
+            'file' => 'required'
         ]);
-
+        $path = $req->file->store('public');
+        $filepath = explode('/', $path);
+        $imagePath = $filepath[1];
         Student::create([
             'name'=> $req->name,
             'email'=> $req->email,
@@ -29,7 +32,8 @@ class StudentController extends Controller
             'machines' => implode(',', $req->machines),
             'gender' => $req->gender,
             'country' => $req->country,
-            'category_id' => $req->categories_id
+            'category_id' => $req->categories_id,
+            'image_path' => $imagePath
         ]);
         return redirect('/');
     }

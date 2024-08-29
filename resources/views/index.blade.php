@@ -40,6 +40,7 @@
     <div class="container-fluid">
     <table class="table table-striped table-bordered">
         <tr>
+            <th>Image</th>
             <th>Id</th>
             <th>Name</th>
             <th>Email</th>
@@ -48,12 +49,11 @@
             <th>Gender</th>
             <th>Country</th>
             <th>Category Name</th>
-            <th>Created_At</th>
-            <th>Updated_At</th>
             <th colspan="3">Action</th>
         </tr>
         @forelse ($students as $student)
             <tr>
+                <td><img src="{{ url('storage/'.$student->image_path) }}" style="width: 100px; height: 100px" alt=""></td>
                 <td>{{$student->id}}</td>
                 <td>{{$student->name}}</td>
                 <td>{{$student->email}}</td>
@@ -62,8 +62,6 @@
                 <td>{{$student->gender}}</td>
                 <td>{{$student->country}}</td>
                 <td>{{$student->category->name}}</td>
-                <td>{{$student->created_at}}</td>
-                <td>{{$student->updated_at}}</td>
                 <td><a href="{{route('edit.student', $student->id)}}" class="btn btn-primary btn-sm">Update</a></td>
                 <td><a href="{{route('view.student', $student->id)}}" class="btn btn-warning btn-sm">View</a></td>
                 <td><a href="{{route('delete.student', $student->id)}}" class="btn btn-danger btn-sm">Delete</a></td>
